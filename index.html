@@ -528,12 +528,54 @@
   .footer-links a:hover { color: var(--ink); }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-right-img { display: none; }
-    .stats-bar-inner { grid-template-columns: 1fr 1fr; }
-    .nav-links { display: none; }
-  }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+}
+
+.mobile-menu a {
+  font-size: 14px;
+  color: var(--ink-3);
+  text-decoration: none;
+}
+
+.mobile-menu a:hover { color: var(--ink); }
+
+.mobile-menu.open { display: flex; }
+
+@media (max-width: 768px) {
+  body { overflow-x: hidden; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-right-img { display: none; }
+  .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+  .pillars-list .pillar-row { grid-template-columns: 90px 1fr; }
+  .team-row { grid-template-columns: 44px 1fr; }
+  .hero h1 { font-size: 26px; }
+}
 
 </style>
 </head>
@@ -553,6 +595,16 @@
       <li><a href="#team">Team</a></li>
       <li><a href="#contact" class="nav-contact">Contact</a></li>
     </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#pillars" onclick="toggleMenu()">Research</a>
+    <a href="#students" onclick="toggleMenu()">Join us</a>
+    <a href="#team" onclick="toggleMenu()">Team</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
   </div>
 </nav>
 
@@ -741,6 +793,12 @@
     </ul>
   </div>
 </footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+</script>
 
 </body>
 </html>
