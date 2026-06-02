@@ -2,5 +2,7 @@
 __pycache__/
 *.pyc
 
+.DS_Store
+
 # Generated output
 index.html

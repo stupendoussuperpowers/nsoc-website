@@ -14,21 +14,19 @@ This is a tiny Jinja2 static site. Edit the template/data files, run the build s
 Install the template dependency:
 
 ```sh
-python3 -m venv .venv
-. .venv/bin/activate
-python -m pip install -r requirements.txt
+uv sync
 ```
 
 Build the static page:
 
 ```sh
-python build.py
+uv run python build.py
 ```
 
 View the site locally:
 
 ```sh
-python -m http.server 8000
+uv run python -m http.server 8000
 ```
 
 Then open http://localhost:8000 in a browser.
