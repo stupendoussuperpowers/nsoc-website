@@ -6,3 +6,4 @@ __pycache__/
 
 # Generated output
 index.html
+_site/

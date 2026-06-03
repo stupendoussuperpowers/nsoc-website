@@ -1,49 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NSOC - NYU Software Supply Chain Security Operations Center</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-  <link rel="icon" href="images/favicon/favicon.ico">
-  <link rel="manifest" href="images/favicon/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <nav>
-    <div class="nav-inner">
-      <a href="#" class="nav-brand">
-        <img src="images/logov3.png" alt="NSOC Logo">
-        <span class="nav-brand-text">NSOC</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#pillars">Research</a></li>
-        <li><a href="#students">Join us</a></li>
-        <li><a href="#updates">Updates</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#contact" class="nav-contact">Contact</a></li>
-      </ul>
-      <button class="hamburger" data-menu-toggle aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#about">About</a>
-      <a href="#pillars">Research</a>
-      <a href="#students">Join us</a>
-      <a href="#updates">Updates</a>
-      <a href="#team">Team</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+{% extends "base.html.j2" %}
 
-  <main>
+{% block content %}
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-left">
@@ -53,7 +10,7 @@
           </p>
         </div>
         <div class="hero-right-img">
-          <img src="images/tree.png" alt="">
+          <img src="{{ asset('images/tree.png') }}" alt="">
         </div>
       </div>
     </section>
@@ -181,7 +138,7 @@
             {% for person in people %}
             <article class="team-row">
               {% if person.image %}
-              <img class="team-photo" src="{{ person.image }}" alt="{{ person.name }}">
+              <img class="team-photo" src="{{ asset(person.image) }}" alt="{{ person.name }}">
               {% else %}
               <div class="team-avatar">{{ person.initials }}</div>
               {% endif %}
@@ -206,29 +163,9 @@
             Whether you're a student interested in joining, an organization looking to enroll, or a researcher interested in collaboration, we'd like to hear from you.
           </p>
           <div class="contact-actions">
-            <a href="mailto:jcappos@nyu.edu" class="btn-primary">Email NSOC</a>
+            <a href="mailto:{{ site.contact_email }}" class="btn-primary">Email NSOC</a>
           </div>
         </div>
       </div>
     </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-left">
-        <strong>NSOC</strong> - NYU Software Supply Chain Security Operations Center - Made by SSL lab with :)
-      </div>
-      <ul class="footer-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#pillars">Research</a></li>
-        <li><a href="#students">Students</a></li>
-        <li><a href="#updates">Updates</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="mailto:jcappos@nyu.edu">Contact</a></li>
-      </ul>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
-</body>
-</html>
+{% endblock %}
